@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AFNetworking
+import MBProgressHUD
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -19,8 +21,23 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
 
-        // Do any additional setup after loading the view.
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+
         
+        // Display HUD right before the request is made
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        getMovieData()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func getMovieData() {
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -30,17 +47,15 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 if let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
                     print(dataDictionary)
                     
+                    // Hide HUD once the network request comes back
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    
                     self.movies = dataDictionary["results"] as? [NSDictionary]
                     self.tableView.reloadData()
                 }
             }
         }
         task.resume()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,13 +72,32 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let movie = movies![indexPath.row]
         let title = movie["title"] as! String
         let overview = movie["overview"] as! String
+        let baseURL = "https://image.tmdb.org/t/p/w500"
+        let posterPath = movie["poster_path"] as! String
+        let rating = movie["vote_average"] as! Double
+        
+        let imageURL = URL(string: baseURL + posterPath)
         
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
+        cell.posterView.setImageWith(imageURL!)
         
-        
+        cell.ratingLabel.text = "\(rating)"
+        if rating < 6.0 {
+            cell.ratingLabel.textColor = UIColor.red
+        } else if rating < 7.5 {
+            cell.ratingLabel.textColor = UIColor.yellow
+        } else {
+            cell.ratingLabel.textColor = UIColor.green
+        }
+
         print("row \(indexPath.row)")
         return cell
+    }
+    
+    func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        getMovieData()
+        refreshControl.endRefreshing()
     }
     
 
