@@ -14,6 +14,7 @@
 		FAF8EAD71E32D27C00E1E1B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF8EAD51E32D27C00E1E1B7 /* LaunchScreen.storyboard */; };
 		FAF8EADF1E32D3D300E1E1B7 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8EADE1E32D3D300E1E1B7 /* MoviesViewController.swift */; };
 		FAF8EAE21E32DD9400E1E1B7 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8EAE11E32DD9400E1E1B7 /* MovieCell.swift */; };
+		FAF8EB081E337A5D00E1E1B7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8EB071E337A5D00E1E1B7 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		FAF8EAD81E32D27C00E1E1B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAF8EADE1E32D3D300E1E1B7 /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		FAF8EAE11E32DD9400E1E1B7 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		FAF8EB071E337A5D00E1E1B7 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				FAF8EADE1E32D3D300E1E1B7 /* MoviesViewController.swift */,
+				FAF8EB071E337A5D00E1E1B7 /* DetailViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				FAF8EACD1E32D27C00E1E1B7 /* AppDelegate.swift in Sources */,
 				FAF8EADF1E32D3D300E1E1B7 /* MoviesViewController.swift in Sources */,
 				FAF8EAE21E32DD9400E1E1B7 /* MovieCell.swift in Sources */,
+				FAF8EB081E337A5D00E1E1B7 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
