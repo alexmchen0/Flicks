@@ -62,7 +62,7 @@ As I did not implement many additional features, everything was pretty straight 
 
 **Flicks** is a movies app displaying box office and top rental DVDs using [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **X** hours spent in total
+Time spent: **6** hours spent in total
 
 ## User Stories
 
@@ -90,7 +90,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://imgur.com/dXCV8bh.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+http://imgur.com/dXCV8bh.gif
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
